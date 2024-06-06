@@ -1,7 +1,7 @@
 # PRODIGY_ML_02
  # Introduction
- Customer Segmentation using K-Means Clustering
-This project aims to segment customers into different groups based on their shopping trends.
+ Customer Segmentation using K-Means Clustering.
+ This project aims to segment customers into different groups based on their shopping trends.
 
 # Dataset
 https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python
