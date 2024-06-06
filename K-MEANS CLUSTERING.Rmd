@@ -1,0 +1,86 @@
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r echo=TRUE}
+# Data Preprocessing 
+
+# Importing the data
+data= Mall_Customers.csv
+head(data)
+# Handling missing data
+data$Age = ifelse(is.na(data$Age),ave(data$Age, FUN = function(x) mean(x, na.rm = TRUE)),data$Age)
+data$Annual_income = ifelse(is.na(data$Annual_income),ave(data$Annual_income, FUN = function(x) mean(x, na.rm = TRUE)),data$Annual_income)
+data$Spendind_score = ifelse(is.na(data$Spending_score),ave(data$Spending_score, FUN = function(x) mean(x, na.rm = TRUE)),data$Spending_score)
+
+#converting the categorical attribute gender to numerical attribute
+data$Gender=as.numeric(factor(data$Gender))
+data$Gender
+str(data$ Gender)
+#splitting the dataset into training and testing set
+train=sort(sample(nrow(data),nrow(data)*0.7));train
+train_data=data[train,]
+head(train_data)
+test_data=data[-train,]
+head(test_data)
+dim(train_data)
+dim(test_data)
+##########################################################################################
+library(tidyverse)
+library(cluster) #clustering algorithm
+library(ggplot2)
+library(factoextra) #clustering visualization
+# Feature Scaling
+train_data[,2:5] = scale(train_data[,2:5])
+test_data[,2:5] = scale(test_data[,2:5])
+
+
+#k=2
+k2=kmeans(train_data,centers = 2, nstart=25)       # 25 iterations 
+str(k2) 
+#k=3
+k3=kmeans(train_data,centers = 3, nstart=25)       
+str(k3) 
+#k=4
+k4=kmeans(train_data,centers = 4,nstart = 25)       
+str(k4)
+
+#k=5
+k5=kmeans(train_data,centers = 5,nstart = 25)    
+str(k5)
+#k=6
+k6=kmeans(train_data,centers = 6,nstart = 25)    
+str(k6)
+# Visualizing the clusters for k=2,3,4,5,6
+library(gridExtra)
+p1=fviz_cluster(k2,geom='point',data=train_data,main='k=2')
+p2=fviz_cluster(k3,geom='point',data=train_data,main='k=3')
+p3=fviz_cluster(k4,geom='point',data=train_data,main='k=4')
+p4=fviz_cluster(k5,geom='point',data=train_data,main='k=5')
+p5=fviz_cluster(k6,geom='point',data=train_data,main='k=6')
+
+grid.arrange(p1,p2,p3,p4,p5,nrow=2)
+
+#selecting the optimal number of clusters
+set.seed(123)
+gap_stat=clusGap(train_data,FUN=kmeans,nstart=25,K.max = 10,B=50)
+fviz_gap_stat(gap_stat)
+#Gap Statistic: The Gap statistic compares the total within intra-cluster variation 
+#for different values of k with their expected values under null reference distribution 
+#of the data. The optimal number of clusters is the value that maximizes the Gap statistic.
+### THE OPTIMAL NUMBER OF CLUSTER IS OBTAINED AS 8
+
+cluster=kmeans(train_data,centers = 8,nstart = 25)
+cluster
+# Determine the cluster for the test set
+# Create a new k-means model using the test data
+test_cluster <- kmeans(test_data, centers = 8, nstart = 25)
+
+# Visualising the test set results
+fviz_cluster(test_cluster, data = test_data)
+```
+
