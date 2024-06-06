@@ -16,7 +16,7 @@ The dataset used in this project is the `Mall_Customers.csv` which contains info
 #creating a K-means model using test data with optimal number of clusters determined from training data.
 
 # Conclusion
-![image](https://github.com/Akhila-04-03/PRODIGY_ML_02/assets/159133840/fabe7e05-0511-4b23-9a9e-10b2abb3f089)
+![image](https://github.com/Akhila-04-03/PRODIGY_ML_02/assets/159133840/1bf02186-cb0a-4c2a-9b8a-7014899baf82)
 
 -Distinct Segments:The eight clusters represent distinct customer segments, each with unique characteristics.
 --From the cluster plot it can be identified a general idea of what these characteristics might be in a retail context:
