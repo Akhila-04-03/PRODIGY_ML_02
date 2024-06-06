@@ -11,9 +11,13 @@ The dataset used in this project is the `Mall_Customers.csv` which contains info
 #The project begins with data preprocessing where missing data is handled by replacing missing values with the mean of the respective column. The categorical attribute ‘Gender’ is converted to a numerical attribute for further processing.
 #spliting of data into training and testing set.
 #k-means clustering to training data and finding optimal number of clusters using Gap statistic method.
+![image](https://github.com/Akhila-04-03/PRODIGY_ML_02/assets/159133840/4a5b4cc5-a4a1-4485-a7bc-28db8c88a769)
+
 #creating a K-means model using test data with optimal number of clusters determined from training data.
 
 # Conclusion
+![image](https://github.com/Akhila-04-03/PRODIGY_ML_02/assets/159133840/fabe7e05-0511-4b23-9a9e-10b2abb3f089)
+
 -Distinct Segments:The eight clusters represent distinct customer segments, each with unique characteristics.
 --From the cluster plot it can be identified a general idea of what these characteristics might be in a retail context:
 
