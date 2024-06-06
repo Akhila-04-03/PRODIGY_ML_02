@@ -31,5 +31,5 @@ The dataset used in this project is the `Mall_Customers.csv` which contains info
 -Potential Overlaps: While the clusters are distinct, any overlaps could indicate customers with similar behaviors across different segments, which could be an opportunity for cross-promotion.
 
 # Contact
-For any questions, comments, or feedback, You can contact us at
+For any questions, comments, or feedback, You can contact me via given email
 • Email: akhilaraveendranpm@gmail.com
